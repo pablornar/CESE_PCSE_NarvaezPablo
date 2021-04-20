@@ -1,10 +1,11 @@
 /*============================================================================
- * Autor:
+ * Autor: Narvaez Pablo	
  * Licencia:
- * Fecha:
+ * Fecha: 31/03/2021
  *===========================================================================*/
 
 // Inlcusiones
+#include <stdio.h>
 #include "sapi.h"        	// <= Biblioteca sAPI
 #include "inicio.h"			// Biblioteca de inicio del micro.
 #include "displaygraf.h"	//libreria general del display
@@ -17,6 +18,8 @@ extern uint8_t SevenSegNumFont[];
 extern uint8_t Dingbats1_XL[];
 short ResH = 800;
 short ResV = 480;
+
+float valor;
 
 // FUNCION PRINCIPAL, PUNTO DE ENTRADA AL PROGRAMA LUEGO DE ENCENDIDO O RESET.
 int main(void) {
@@ -35,7 +38,7 @@ int main(void) {
 	/* Retardo bloqueante durante 100ms */
 
 	delay(1000);
-
+	valor=3.3/2;
 	// ---------- REPETIR POR SIEMPRE --------------------------
 	while ( TRUE) {
 		setColor(VGA_GREEN);
@@ -52,9 +55,26 @@ int main(void) {
 		setFont(BigFont);
 		printCharAscii(97, 300, 350);
 		delay(500);
+		drawRectangulo(200,100,500,200);
+		delay(500);
+		drawRoundRect(200,300,500,400);
+		delay(500);
+		//setBackColor(VGA_BLUE);
+		//drawfillRect(200,100,500,200);
+		//delay(500);
+		drawCircle(300,300,50);
+		delay(500);
+		setColor(VGA_BLUE);
+		drawfillCircle(300,300,50);
+		delay(500);
+		print("hola",300,400,90);
+		delay(500);
+		printNumI(12,700,400,2,0);
+		delay(500);
+		printNumF(valor,4,550,400,'.',4,' ');
+		delay(500);
 		clrScr();
 		delay(500);
-
 	}
 
 	// NO DEBE LLEGAR NUNCA AQUI, debido a que a este programa se ejecuta

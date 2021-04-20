@@ -244,23 +244,25 @@ void setXY(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2) {
 		swap(uint32_t, x2, y2)
 		y1=disp_y_size-y1;
 		y2 = disp_y_size - y2;
-	swap(uint32_t, y1, y2)
+		swap(uint32_t, y1, y2)
+	}
+	swap(uint32_t, x1, y1);
+	swap(uint32_t, x2, y2);
+	LCD_Write_COM(0x2a);		//habilita las direccion de las columnas
+	LCD_Write_DATA(x1 >> 8);
+	LCD_Write_DATA(x1);
+	LCD_Write_DATA(x2 >> 8);
+	LCD_Write_DATA(x2);
+	LCD_Write_COM(0x2b);		//setea la direccion de pagina, filas
+	LCD_Write_DATA(y1 >> 8);
+	LCD_Write_DATA(y1);
+	LCD_Write_DATA(y2 >> 8);
+	LCD_Write_DATA(y2);
+	LCD_Write_COM(0x2c);		//inicio de escritura de memoria
+							/*Transfer image information from the host processor interface
+							to the SSD1963 starting at the location provided by
+							set_column_address and set_page_address*/
 }
-swap(uint32_t, x1, y1);
-swap(uint32_t, x2, y2);
-LCD_Write_COM(0x2a);
-LCD_Write_DATA(x1 >> 8);
-LCD_Write_DATA(x1);
-LCD_Write_DATA(x2 >> 8);
-LCD_Write_DATA(x2);
-LCD_Write_COM(0x2b);
-LCD_Write_DATA(y1 >> 8);
-LCD_Write_DATA(y1);
-LCD_Write_DATA(y2 >> 8);
-LCD_Write_DATA(y2);
-LCD_Write_COM(0x2c);
-}
-
 
 //para establecer el tipo de letra
 void setFont(uint8_t* font) {

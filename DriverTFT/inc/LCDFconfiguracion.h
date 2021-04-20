@@ -36,7 +36,7 @@ void Conflcd(int model, int RS, int WR, int CS, int REST) {
 	}
 }
 
-void _set_direction_registers(uint8_t mode) {
+void _set_direction_registers(uint8_t mode) {  //no lo uso es para el micro arm cortex m3
 	if (mode == 16) {
 		/*
 		 REG_PIOA_WPMR=(REG_PIOA_WPMR & 0b11111111111111111111111111111110) | 0b00000000000000000000000000000001; //habilito la escritura de los pio
@@ -137,7 +137,7 @@ void LCD_Writ_Bus(char VH, char VL, uint8_t mode) {
 	gpioWrite(WR, OFF);
 }
 
-void LCD_Write_DATA(char VL) {
+void LCD_Write_DATA(char VL) {		//no lo uso es para otro modelo de display de 8bits
 	//sbi(P_RS, B_RS); pone en 1 RS
 	gpioWrite(RS, ON);
 	//REG_PIOC_SODR=(REG_PIOC_SODR & 0b11111111111111111111111110111111) | 0b00000000000000000000000001000000; //PC6-RS

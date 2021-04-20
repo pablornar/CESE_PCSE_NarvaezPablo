@@ -9,6 +9,9 @@
 #ifndef	DISPLAYGRAF_H_
 #define DISPLAYGRAF_H_
 
+#define LEFT 0
+#define RIGHT 9999
+#define CENTER 9998
 //*********************************
 // COLORS
 //*********************************
@@ -61,11 +64,9 @@ uint8_t __p1, __p2, __p3, __p4, __p5;
 bool _transparent;
 uint8_t LANDSCAPE = 1;
 uint8_t PORTRAIT = 0;
-//long RS;
-//int CS;
-//int REST;
+
 uint8_t model = 20;
-//int WR;
+
 int SER;
 int CTE70 = 20;
 int SERIAL_4PIN = 4;
@@ -75,7 +76,6 @@ int NOTINUSE = 255;
 
 #include <LCDFconfiguracion.h>  //agrega la libreria de configuracion de lcd
 #include <LCDFcomandos.h>  //agrega la libreria de comandos.
-
 #include <LCDFinicio.h>  //agrega la libreria de inicializacion de lcd
 #include <LCDFgraficos.h>  //agrega la libreria de graficos
 
