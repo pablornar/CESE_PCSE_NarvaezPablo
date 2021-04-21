@@ -25,6 +25,7 @@ void clrScr(void) {
 
 	if (display_transfer_mode == 16)
 		_fast_fill_16(0, 0, ((disp_x_size + 1) * (disp_y_size + 1)));
+
 	else {
 		for (i = 0; i < ((disp_x_size + 1) * (disp_y_size + 1)); i++) {
 			if (display_transfer_mode != 1)
@@ -42,10 +43,12 @@ void clrScr(void) {
 }
 
 void clrXY(void) {
-	if (orient == PORTRAIT)
+	if (orient == PORTRAIT){
 		setXY(0, 0, disp_x_size, disp_y_size);
-	else
+	}
+	else{
 		setXY(0, 0, disp_y_size, disp_x_size);
+	}
 }
 
 void _fast_fill_16(int ch, int cl, long pix) {
@@ -249,15 +252,15 @@ void setXY(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2) {
 	swap(uint32_t, x1, y1);
 	swap(uint32_t, x2, y2);
 	LCD_Write_COM(0x2a);		//habilita las direccion de las columnas
-	LCD_Write_DATA(x1 >> 8);
-	LCD_Write_DATA(x1);
-	LCD_Write_DATA(x2 >> 8);
-	LCD_Write_DATA(x2);
+	LCD_Write_DATA(x1 >> 8);	//SC[15:18]	0
+	LCD_Write_DATA(x1);			//SC[7:0]  0
+	LCD_Write_DATA(x2 >> 8);	//EC[15:18] parte alta
+	LCD_Write_DATA(x2);			//EC[7:0]  parte baja
 	LCD_Write_COM(0x2b);		//setea la direccion de pagina, filas
-	LCD_Write_DATA(y1 >> 8);
-	LCD_Write_DATA(y1);
-	LCD_Write_DATA(y2 >> 8);
-	LCD_Write_DATA(y2);
+	LCD_Write_DATA(y1 >> 8);	//SC[15:18]
+	LCD_Write_DATA(y1);			//SC[7:0]
+	LCD_Write_DATA(y2 >> 8);	//EC[15:18] parte alta
+	LCD_Write_DATA(y2);			//EC[7:0]  parte baja
 	LCD_Write_COM(0x2c);		//inicio de escritura de memoria
 							/*Transfer image information from the host processor interface
 							to the SSD1963 starting at the location provided by

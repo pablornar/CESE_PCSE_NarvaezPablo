@@ -42,6 +42,8 @@ int main(void) {
 	// ---------- REPETIR POR SIEMPRE --------------------------
 	while ( TRUE) {
 		setColor(VGA_GREEN);
+		drawPixel(380, 470);
+		delay(500);
 		drawVLine(100, 100, 200);
 		delay(500);
 		drawHLine(100, 100, 400);
@@ -50,22 +52,20 @@ int main(void) {
 		drawLine(200, 200, 400, 200);
 		delay(500);
 		setColor(VGA_RED);
-		drawPixel(380, 470);
-		delay(500);
 		setFont(BigFont);
 		printCharAscii(97, 300, 350);
 		delay(500);
 		drawRectangulo(200,100,500,200);
 		delay(500);
 		drawRoundRect(200,300,500,400);
-		delay(500);
+		//delay(500);
 		//setBackColor(VGA_BLUE);
 		//drawfillRect(200,100,500,200);
 		//delay(500);
-		drawCircle(300,300,50);
-		delay(500);
-		setColor(VGA_BLUE);
-		drawfillCircle(300,300,50);
+		//drawCircle(300,300,50);
+		//delay(500);
+		//setColor(VGA_BLUE);
+		//drawfillCircle(300,300,50);
 		delay(500);
 		print("hola",300,400,90);
 		delay(500);
